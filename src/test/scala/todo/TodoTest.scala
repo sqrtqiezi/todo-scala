@@ -6,7 +6,6 @@ class TodoTest extends BaseSpec {
     val todo = new Todo
     val command = todo.parse("add", "hello", "world")
     command shouldBe a [AddCommand]
-
   }
 
 }
