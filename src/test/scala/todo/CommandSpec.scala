@@ -1,6 +1,6 @@
 package todo
 
-class CommandTest extends BaseSpec {
+class CommandSpec extends BaseSpec {
 
   "An AddCommand" should "add a item for state" in {
     val state = new State
