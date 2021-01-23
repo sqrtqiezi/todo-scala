@@ -1,11 +1,9 @@
 package todo
 
-import scala.language.postfixOps
-
 class Todo {
-  def parse(args: String*): Command = args toList match {
-    case "add" :: content :: Nil => new AddCommand(content)
-    case "done" :: idStr :: Nil =>
+  def parse(args: Array[String]): Command = args match {
+    case Array("add", content) => new AddCommand(content)
+    case Array("done", idStr) =>
       val id = idStr.toInt
       new DoneCommand(id)
   }
@@ -14,7 +12,10 @@ class Todo {
 object Todo {
   def main(args: Array[String]): Unit = {
     val todo = new Todo
+    val state = new State
 
-    todo.parse(args: _*)
+    val command = todo.parse(args)
+    val message = command.execute(state)
+    println(message)
   }
 }

@@ -8,13 +8,13 @@ class TodoSpec extends BaseSpec {
   }
 
   it should "parse a command" in {
-    val command = todo.parse("add", "hello world")
+    val command = todo.parse(Array("add", "hello world"))
 
     command shouldBe a[AddCommand]
   }
 
   it should "parse a done command" in {
-    val command = todo.parse("done", "1")
+    val command = todo.parse(Array("done", "1"))
     command shouldBe a[DoneCommand]
   }
 }
