@@ -1,10 +1,10 @@
 package todo
 
 class StateSpec extends BaseSpec {
-  var state: State = _
+  var state: RealState = _
 
   before {
-    state = new State
+    state = new RealState
   }
 
   "A new State" should "have size 0" in {
@@ -27,16 +27,6 @@ class StateSpec extends BaseSpec {
     state should have size 2
     state done id
     state should have size 1
-  }
-
-  it can "save date to plat file" in {
-    state add "hello world"
-    state add "hello scala"
-    state done 2
-    state hibernate "src/test/todo2.dat"
-
-    val lines = io.Source.fromFile("src/test/todo2.dat").getLines.toList
-    lines should be(List("1:hello world:AVAILABLE", "2:hello scala:DONE"))
   }
 
   it should "list all available items" in {
@@ -66,22 +56,5 @@ class StateSpec extends BaseSpec {
     state done 2
 
     state.doneCount should equal(1)
-  }
-
-  "State" can "load data from file" in {
-    import org.scalatest.TryValues.convertTryToSuccessOrFailure
-
-    val tryState = State load "src/test/todo.dat"
-
-    val state = tryState.success.value
-    val contents = state.list.map(_.content)
-    contents should contain theSameElementsAs List("hello world", "hello scala")
-  }
-
-  it should "reset id generator after load data from file" in {
-    val tryState = State load "src/test/todo.dat"
-    val id = tryState.get add "test2"
-
-    id should equal(3)
   }
 }

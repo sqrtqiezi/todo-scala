@@ -11,7 +11,7 @@ class CommandSpec extends BaseSpec {
   }
 
   it should "add a item for state" in {
-    val mockState = mock[State]
+    val mockState = mock[RealState]
     when(mockState.add("hello world")).thenReturn(1)
 
     val command = new AddCommand("hello world")
@@ -27,7 +27,7 @@ class CommandSpec extends BaseSpec {
   }
 
   it should "done a item in the state with index" in {
-    val mockState = mock[State]
+    val mockState = mock[RealState]
     when(mockState.done(2)).thenReturn(true)
 
     val command = new DoneCommand(2)
@@ -43,7 +43,7 @@ class CommandSpec extends BaseSpec {
   }
 
   it should "list all available items default" in {
-    val mockState = mock[State]
+    val mockState = mock[RealState]
     when(mockState.list).thenReturn(List(
       Item(1, "hello world", Status.available),
       Item(2, "hello scala", Status.available)
@@ -64,7 +64,7 @@ class CommandSpec extends BaseSpec {
   }
 
   it should "list all items when given argument --all" in {
-    val mockState = mock[State]
+    val mockState = mock[RealState]
     when(mockState.listAll).thenReturn(List(
       Item(1, "hello world", Status.available),
       Item(2, "hello scala", Status.done),

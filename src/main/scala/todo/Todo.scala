@@ -3,7 +3,6 @@ package todo
 import scala.util.{Failure, Success}
 
 object Todo {
-
   def main(args: Array[String]): Unit = {
     val command = Command(args) match {
       case _: InvalidCommand =>
@@ -12,7 +11,7 @@ object Todo {
       case other => other
     }
 
-    val state = State.load("./todo.dat") match {
+    val state = ProxyState.load("./todo.dat") match {
       case Success(state) => state
       case Failure(exception) =>
         println(exception)
