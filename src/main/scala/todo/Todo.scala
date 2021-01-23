@@ -1,5 +1,6 @@
 package todo
 
+import todo.command.{Command, InvalidCommand}
 import todo.state.ProxyState
 
 import scala.util.{Failure, Success}

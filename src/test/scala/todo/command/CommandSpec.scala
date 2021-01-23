@@ -1,8 +1,9 @@
-package todo
+package todo.command
 
 import org.mockito.Mockito.{times, verify, when}
 import org.scalatestplus.mockito.MockitoSugar.mock
 import todo.state.{Item, RealState, Status}
+import todo._
 
 class CommandSpec extends BaseSpec {
    "AddCommand" should "parse by args text" in {
