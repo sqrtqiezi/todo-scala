@@ -19,4 +19,13 @@ class StateSpec extends BaseSpec {
     index2 should equal(2)
     state should have size 2
   }
+
+  it should "change the item status with index" in {
+    val index = state add "hello world"
+    state add "hello world"
+
+    state should have size 2
+    state.done(index)
+    state should have size 1
+  }
 }

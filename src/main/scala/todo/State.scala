@@ -1,6 +1,15 @@
 package todo
 
-case class Item(index: Int, content: String)
+object Status extends Enumeration {
+  type Status = Value
+
+  val available: Value = Value("AVAILABLE")
+  val done: Value = Value("DONE")
+}
+
+case class Item(index: Int,
+                content: String, status:
+                Status.Value = Status.available)
 
 class State {
   var count = 0
@@ -13,8 +22,19 @@ class State {
     item.index
   }
 
+  def done(Index: Int): Boolean = {
+    var isChanged = false
+    items = items.map {
+      case existing@Item(Index, _, Status.available) =>
+        isChanged = true
+        Item(existing.index, existing.content, Status.done)
+      case other => other
+    }
+    isChanged
+  }
+
   def size(): Int = {
-    items.size
+    items.count(_.status == Status.available)
   }
 }
 
