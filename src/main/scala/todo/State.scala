@@ -7,7 +7,7 @@ object Status extends Enumeration {
   val done: Value = Value("DONE")
 }
 
-case class Item(index: Int,
+case class Item(id: Int,
                 content: String, status:
                 Status.Value = Status.available)
 
@@ -19,15 +19,15 @@ class State {
     count += 1
     val item = Item(count, content)
     items = items :+ item
-    item.index
+    item.id
   }
 
-  def done(Index: Int): Boolean = {
+  def done(Id: Int): Boolean = {
     var isChanged = false
     items = items.map {
-      case existing@Item(Index, _, Status.available) =>
+      case existing@Item(Id, _, Status.available) =>
         isChanged = true
-        Item(existing.index, existing.content, Status.done)
+        Item(existing.id, existing.content, Status.done)
       case other => other
     }
     isChanged

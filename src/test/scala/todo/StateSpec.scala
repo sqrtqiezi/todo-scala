@@ -11,21 +11,21 @@ class StateSpec extends BaseSpec {
     state should have size 0
   }
 
-  it should "add todo item with content and return index" in {
-    val index = state add "hello world"
-    val index2 = state add "hello scala"
+  it should "add todo item with content and return id" in {
+    val id = state add "hello world"
+    val id2 = state add "hello scala"
 
-    index should equal(1)
-    index2 should equal(2)
+    id should equal(1)
+    id2 should equal(2)
     state should have size 2
   }
 
-  it should "change the item status with index" in {
-    val index = state add "hello world"
+  it should "change the item status with id" in {
+    val id = state add "hello world"
     state add "hello world"
 
     state should have size 2
-    state.done(index)
+    state.done(id)
     state should have size 1
   }
 }
