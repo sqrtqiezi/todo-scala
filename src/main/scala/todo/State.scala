@@ -17,6 +17,12 @@ case class Item(id: Int,
                 Status.Value = Status.available)
 
 class State {
+  def doneCount: Int = items.count(_.status == Status.done)
+
+  def listAll: List[Item] = items
+
+  def list: List[Item] = items.filter(_.status == Status.available)
+
   var count = 0
   var items: List[Item] = List[Item]()
 
