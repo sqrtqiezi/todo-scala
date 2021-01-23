@@ -2,3 +2,6 @@
 .idea/
 project/
 target/
+
+todo.dat
+src/test/todo2.dat

@@ -4,6 +4,10 @@ sealed abstract class Command {
   def execute(state: State): String
 }
 
+class InvalidCommand extends Command {
+  override def execute(state: State): String = throw new NotImplementedError
+}
+
 class AddCommand(content: String) extends Command {
   override def execute(state: State): String = {
     val id = state.add(content)
