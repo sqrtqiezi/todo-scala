@@ -78,7 +78,6 @@ class StateSpec extends BaseSpec {
     contents should contain theSameElementsAs List("hello world", "hello scala")
   }
 
-
   it should "reset id generator after load data from file" in {
     val tryState = State load "src/test/todo.dat"
     val id = tryState.get add "test2"
