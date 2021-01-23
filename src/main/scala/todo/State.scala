@@ -77,6 +77,5 @@ object State {
 
       state
     }
-
   }
 }

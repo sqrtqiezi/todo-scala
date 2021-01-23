@@ -2,23 +2,12 @@ package todo
 
 import scala.util.{Failure, Success}
 
-class Todo {
-  def parse(args: Array[String]): Command = args match {
-    case Array("add", content) => new AddCommand(content)
-    case Array("done", idStr) =>
-      val id = idStr.toInt
-      new DoneCommand(id)
-    case _ => new InvalidCommand
-  }
-}
-
 object Todo {
 
   def main(args: Array[String]): Unit = {
-    val todo = new Todo
-    val command = todo.parse(args) match {
+    val command = Command(args) match {
       case _: InvalidCommand =>
-        println("invalid command")
+        println("Invalid Command")
         sys.exit(-1)
       case other => other
     }
