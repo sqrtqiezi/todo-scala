@@ -1,6 +1,7 @@
-package todo
+package todo.state
 
 import org.scalatest.TryValues.convertTryToSuccessOrFailure
+import todo._
 
 import scala.collection.immutable.List
 

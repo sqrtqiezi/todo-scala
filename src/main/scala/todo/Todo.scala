@@ -1,5 +1,7 @@
 package todo
 
+import todo.state.ProxyState
+
 import scala.util.{Failure, Success}
 
 object Todo {

@@ -1,15 +1,4 @@
-package todo
-
-object Status extends Enumeration {
-  type Status = Value
-
-  val available: Value = Value("AVAILABLE")
-  val done: Value = Value("DONE")
-}
-
-case class Item(id: Int,
-                content: String,
-                status: Status.Value = Status.available)
+package todo.state
 
 class RealState extends State {
   var count = 0

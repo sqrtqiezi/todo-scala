@@ -1,5 +1,7 @@
 package todo
 
+import todo.state.{Item, State, Status}
+
 sealed abstract class Command {
   def execute(state: State): String
 }

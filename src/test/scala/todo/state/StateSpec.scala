@@ -1,4 +1,6 @@
-package todo
+package todo.state
+
+import todo.BaseSpec
 
 class StateSpec extends BaseSpec {
   var state: RealState = _

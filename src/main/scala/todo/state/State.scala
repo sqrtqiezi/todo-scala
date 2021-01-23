@@ -1,4 +1,4 @@
-package todo
+package todo.state
 
 trait State {
   def add(content: String): Int
