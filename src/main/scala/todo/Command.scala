@@ -24,3 +24,13 @@ class DoneCommand(index: Int) extends Command {
       "Nothing changed"
   }
 }
+
+object Command {
+  def apply(args: Array[String]): Command = args match {
+    case Array("add", content) => new AddCommand(content)
+    case Array("done", idStr) =>
+      val id = idStr.toInt
+      new DoneCommand(id)
+    case _ => new InvalidCommand
+  }
+}
