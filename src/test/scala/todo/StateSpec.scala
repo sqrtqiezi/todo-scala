@@ -29,14 +29,6 @@ class StateSpec extends BaseSpec {
     state should have size 1
   }
 
-  it can "load data from file" in {
-    import org.scalatest.TryValues.convertTryToSuccessOrFailure
-
-    val tryState = State load "src/test/todo.dat"
-
-    tryState.success.value should have size 2
-  }
-
   it can "save date to plat file" in {
     state add "hello world"
     state add "hello scala"
@@ -46,6 +38,15 @@ class StateSpec extends BaseSpec {
     val lines = io.Source.fromFile("src/test/todo2.dat").getLines.toList
     lines should be(List("1:hello world:AVAILABLE", "2:hello scala:DONE"))
   }
+
+  "State" can "load data from file" in {
+    import org.scalatest.TryValues.convertTryToSuccessOrFailure
+
+    val tryState = State load "src/test/todo.dat"
+
+    tryState.success.value should have size 2
+  }
+
 
   it should "reset id generator after load data from file" in {
     val tryState = State load "src/test/todo.dat"
