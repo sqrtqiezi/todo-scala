@@ -45,9 +45,7 @@ case class ListCommand(isShowAll: Boolean = false) extends Command {
 object Command {
   def apply(args: Array[String]): Command = args match {
     case Array("add", content) => new AddCommand(content)
-    case Array("done", idStr) =>
-      val id = idStr.toInt
-      new DoneCommand(id)
+    case Array("done", idStr) => new DoneCommand(idStr.toInt)
     case Array("list") => ListCommand()
     case Array("list", "--all") => ListCommand(true)
     case _ => new InvalidCommand

@@ -13,8 +13,8 @@ object Status extends Enumeration {
 }
 
 case class Item(id: Int,
-                content: String, status:
-                Status.Value = Status.available)
+                content: String,
+                status: Status.Value = Status.available)
 
 class State {
   def doneCount: Int = items.count(_.status == Status.done)
