@@ -63,7 +63,7 @@ class CommandSpec extends BaseSpec {
     listCommand.isShowAll should equal(true)
   }
 
-  it should "list all items with --all argument" in {
+  it should "list all items when given argument --all" in {
     val mockState = mock[State]
     when(mockState.listAll).thenReturn(List(
       Item(1, "hello world", Status.available),
