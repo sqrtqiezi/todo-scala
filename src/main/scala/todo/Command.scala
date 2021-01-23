@@ -4,10 +4,19 @@ sealed abstract class Command {
   def execute(state: State): String
 }
 
-case class AddCommand(content: String) extends Command {
+class AddCommand(content: String) extends Command {
   override def execute(state: State): String = {
-    val index = state.add(content)
+    val id = state.add(content)
 
-    s"$index. $content\nItem $content added"
+    s"$id. $content\nItem $content added"
+  }
+}
+
+class DoneCommand(index: Int) extends Command {
+  override def execute(state: State): String = {
+    if (state.done(index))
+      s"Item $index done."
+    else
+      "Nothing changed"
   }
 }
